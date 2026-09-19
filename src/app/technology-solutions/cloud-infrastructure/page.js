@@ -3,8 +3,8 @@ import { ArrowRight, CheckCircle2, Cloud, ArrowLeft } from "lucide-react";
 import { seoMetadataMap } from "@/lib/data";
 
 export const metadata = {
-  title: seoMetadataMap.cloud.title,
-  description: seoMetadataMap.cloud.description,
+  title: seoMetadataMap.cloudInfrastructure.title,
+  description: seoMetadataMap.cloudInfrastructure.description,
 };
 
 export default function CloudInfrastructurePage() {

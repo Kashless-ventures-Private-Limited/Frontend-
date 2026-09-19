@@ -3,8 +3,8 @@ import { ArrowRight, CheckCircle2, Laptop, ArrowLeft } from "lucide-react";
 import { seoMetadataMap } from "@/lib/data";
 
 export const metadata = {
-  title: seoMetadataMap.hardware.title,
-  description: seoMetadataMap.hardware.description,
+  title: seoMetadataMap.hardwareWorkplace.title,
+  description: seoMetadataMap.hardwareWorkplace.description,
 };
 
 export default function HardwareWorkplacePage() {

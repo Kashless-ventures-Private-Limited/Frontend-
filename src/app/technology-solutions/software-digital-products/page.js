@@ -3,8 +3,8 @@ import { ArrowRight, CheckCircle2, Cpu, ArrowLeft, ShieldCheck } from "lucide-re
 import { seoMetadataMap } from "@/lib/data";
 
 export const metadata = {
-  title: seoMetadataMap.software.title,
-  description: seoMetadataMap.software.description,
+  title: seoMetadataMap.softwareDigitalProducts.title,
+  description: seoMetadataMap.softwareDigitalProducts.description,
 };
 
 export default function SoftwareDigitalProductsPage() {

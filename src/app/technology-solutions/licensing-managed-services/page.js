@@ -3,8 +3,8 @@ import { ArrowRight, CheckCircle2, Wrench, ArrowLeft } from "lucide-react";
 import { seoMetadataMap } from "@/lib/data";
 
 export const metadata = {
-  title: seoMetadataMap.licensing.title,
-  description: seoMetadataMap.licensing.description,
+  title: seoMetadataMap.licensingManagedServices.title,
+  description: seoMetadataMap.licensingManagedServices.description,
 };
 
 export default function LicensingManagedServicesPage() {

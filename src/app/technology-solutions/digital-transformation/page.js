@@ -1,9 +1,10 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
+import { seoMetadataMap } from "@/lib/data";
 
 export const metadata = {
-  title: "Digital Transformation | Kashless Ventures",
-  description: "Process automation, workflow improvement, data-driven decision support and technology modernization for businesses.",
+  title: seoMetadataMap.digitalTransformation.title,
+  description: seoMetadataMap.digitalTransformation.description,
 };
 
 export default function DigitalTransformationPage() {
