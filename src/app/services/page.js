@@ -1,5 +1,2 @@
 import { redirect } from "next/navigation";
-
-export default function ServicesRedirect() {
-  redirect("/technology-solutions");
-}
+export default function ServicesRedirect() { redirect("/technology-solutions"); }

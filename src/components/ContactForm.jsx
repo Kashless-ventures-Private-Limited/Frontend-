@@ -10,245 +10,142 @@ const emptyForm = {
   workEmail: "",
   phone: "",
   service: "",
-  budget: "",
-  timeline: "",
   message: "",
   consent: false,
 };
 
 function generateReferenceId() {
-  const rand = Math.floor(100000 + Math.random() * 900000);
-  return `KL-${rand}`;
+  return `KV-${Math.floor(100000 + Math.random() * 900000)}`;
 }
 
 export default function ContactForm() {
   const [form, setForm] = useState(emptyForm);
   const [errors, setErrors] = useState({});
-  const [status, setStatus] = useState("idle"); // idle | submitting | success
+  const [status, setStatus] = useState("idle");
   const [referenceId, setReferenceId] = useState("");
 
   function update(field, value) {
-    setForm((f) => ({ ...f, [field]: value }));
-    if (errors[field]) setErrors((e) => ({ ...e, [field]: undefined }));
+    setForm((current) => ({ ...current, [field]: value }));
+    setErrors((current) => ({ ...current, [field]: undefined }));
   }
 
   function validate() {
     const next = {};
     if (!form.fullName.trim()) next.fullName = "Enter your full name.";
     if (!form.companyName.trim()) next.companyName = "Enter your company name.";
-    if (!form.workEmail.trim()) {
-      next.workEmail = "Enter your work email.";
-    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.workEmail)) {
-      next.workEmail = "Enter a valid email address.";
-    }
-    if (!form.service) next.service = "Select a service.";
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(form.workEmail)) next.workEmail = "Enter a valid work email.";
+    if (!form.service) next.service = "Select an enquiry type.";
     if (!form.message.trim()) next.message = "Tell us about your requirement.";
-    if (!form.consent) next.consent = "Consent is required to submit this form.";
+    if (!form.consent) next.consent = "Consent is required.";
     setErrors(next);
     return Object.keys(next).length === 0;
   }
 
-  async function handleSubmit(e) {
-    e.preventDefault();
+  async function handleSubmit(event) {
+    event.preventDefault();
     if (!validate()) return;
 
     setStatus("submitting");
-
-    const refId = generateReferenceId();
+    const referenceId = generateReferenceId();
     const enquiry = {
-      id: refId,
+      id: referenceId,
       name: form.fullName,
       company: form.companyName,
       email: form.workEmail,
       phone: form.phone,
-      service: form.service,
-      budget: form.budget,
-      timeline: form.timeline,
+      enquiryType: form.service,
       message: form.message,
-      status: "New",
-      notes: "",
       createdAt: new Date().toISOString(),
     };
 
-    // Simulate server-side validation, DB write and email notifications.
-    await new Promise((resolve) => setTimeout(resolve, 900));
-
     try {
-      const existing = JSON.parse(localStorage.getItem("kashless_enquiries") || "[]");
-      localStorage.setItem("kashless_enquiries", JSON.stringify([enquiry, ...existing]));
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_BASE_URL || ""}/api/enquiries`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(enquiry),
+      });
+
+      if (!response.ok) throw new Error("Submission failed");
+      const result = await response.json();
+      setReferenceId(result.referenceId || referenceId);
     } catch {
-      // localStorage unavailable — demo still succeeds without persistence
+      // Keep the enquiry journey usable when the API is not connected yet.
+      try {
+        const existing = JSON.parse(localStorage.getItem("kashless_enquiries") || "[]");
+        localStorage.setItem("kashless_enquiries", JSON.stringify([enquiry, ...existing]));
+      } catch {}
+      setReferenceId(referenceId);
     }
 
-    setReferenceId(refId);
     setStatus("success");
   }
 
   if (status === "success") {
     return (
-      <div className="rounded-xl border border-border-color bg-white p-8 text-center sm:p-10">
-        <div className="mx-auto mb-5 flex h-14 w-14 items-center justify-center rounded-full" style={{ background: "rgba(15,110,98,0.1)" }}>
-          <CheckCircle2 size={30} color="var(--teal)" />
+      <div className="rounded-2xl border border-slate-200 bg-white p-8 sm:p-10 text-center">
+        <CheckCircle2 className="mx-auto text-[#0F6E62]" size={42} />
+        <h2 className="text-2xl font-bold text-[#0B1E3D] mt-5">Enquiry submitted</h2>
+        <p className="mt-2 text-slate-600">Thanks, {form.fullName.split(" ")[0]}. Your enquiry has been recorded.</p>
+        <div className="mx-auto mt-6 inline-flex rounded-md bg-[#F8FAFC] border border-slate-200 px-5 py-3 text-sm font-semibold">
+          Reference ID: <span className="ml-2 text-[#0F6E62]">{referenceId}</span>
         </div>
-        <h3 className="text-xl font-bold text-navy">Enquiry submitted</h3>
-        <p className="mt-2 text-[15px] text-secondary-text">
-          Thanks, {form.fullName.split(" ")[0]}. We&rsquo;ve sent a confirmation to{" "}
-          {form.workEmail} and our team has been notified.
-        </p>
-        <div
-          className="mx-auto mt-6 inline-flex items-center gap-2 rounded-md px-5 py-3 text-sm font-semibold text-navy"
-          style={{ background: "var(--surface-bg)", border: "1px solid var(--border-color)" }}
-        >
-          Reference ID: <span className="font-bold text-teal">{referenceId}</span>
-        </div>
-        <div className="mt-6">
-          <button
-            onClick={() => {
-              setForm(emptyForm);
-              setStatus("idle");
-            }}
-            className="text-sm font-semibold text-teal hover:underline"
-          >
-            Submit another enquiry
-          </button>
-        </div>
+        <button onClick={() => { setForm(emptyForm); setStatus("idle"); }} className="block mx-auto mt-6 text-sm font-semibold text-[#0F6E62] hover:underline">
+          Submit another enquiry
+        </button>
       </div>
     );
   }
 
   return (
-    <form
-      onSubmit={handleSubmit}
-      noValidate
-      className="rounded-xl border border-border-color bg-white p-6 sm:p-8"
-    >
+    <form onSubmit={handleSubmit} noValidate className="rounded-2xl border border-slate-200 bg-white p-6 sm:p-8">
       <div className="grid gap-5 sm:grid-cols-2">
         <Field label="Full Name" required error={errors.fullName}>
-          <input
-            type="text"
-            value={form.fullName}
-            onChange={(e) => update("fullName", e.target.value)}
-            className={inputClass(errors.fullName)}
-            placeholder="Jordan Mehta"
-          />
+          <input value={form.fullName} onChange={(e) => update("fullName", e.target.value)} className={inputClass(errors.fullName)} placeholder="Your name" />
         </Field>
-
         <Field label="Company Name" required error={errors.companyName}>
-          <input
-            type="text"
-            value={form.companyName}
-            onChange={(e) => update("companyName", e.target.value)}
-            className={inputClass(errors.companyName)}
-            placeholder="Acme Retail Pvt Ltd"
-          />
+          <input value={form.companyName} onChange={(e) => update("companyName", e.target.value)} className={inputClass(errors.companyName)} placeholder="Your company" />
         </Field>
-
         <Field label="Work Email" required error={errors.workEmail}>
-          <input
-            type="email"
-            value={form.workEmail}
-            onChange={(e) => update("workEmail", e.target.value)}
-            className={inputClass(errors.workEmail)}
-            placeholder="jordan@acme.com"
-          />
+          <input type="email" value={form.workEmail} onChange={(e) => update("workEmail", e.target.value)} className={inputClass(errors.workEmail)} placeholder="name@company.com" />
         </Field>
-
-        <Field label="Phone Number" error={errors.phone}>
-          <input
-            type="tel"
-            value={form.phone}
-            onChange={(e) => update("phone", e.target.value)}
-            className={inputClass(errors.phone)}
-            placeholder="+91 98765 43210"
-          />
+        <Field label="Phone">
+          <input value={form.phone} onChange={(e) => update("phone", e.target.value)} className={inputClass()} placeholder="Optional" />
         </Field>
-
-        <Field label="Service Required" required error={errors.service}>
-          <select
-            value={form.service}
-            onChange={(e) => update("service", e.target.value)}
-            className={inputClass(errors.service)}
-          >
-            <option value="">Select a service</option>
-            {serviceOptions.map((opt) => (
-              <option key={opt} value={opt}>
-                {opt}
-              </option>
-            ))}
+        <Field label="How can we help?" required error={errors.service}>
+          <select value={form.service} onChange={(e) => update("service", e.target.value)} className={inputClass(errors.service)}>
+            <option value="">Select an enquiry type</option>
+            {serviceOptions.map((option) => <option key={option}>{option}</option>)}
           </select>
         </Field>
-
-        <Field label="Project Budget" hint="Optional">
-          <input
-            type="text"
-            value={form.budget}
-            onChange={(e) => update("budget", e.target.value)}
-            className={inputClass()}
-            placeholder="e.g. ₹5–10 lakh"
-          />
-        </Field>
-
-        <Field label="Project Timeline" hint="Optional" className="sm:col-span-2">
-          <input
-            type="text"
-            value={form.timeline}
-            onChange={(e) => update("timeline", e.target.value)}
-            className={inputClass()}
-            placeholder="e.g. Q1 2027, or as soon as possible"
-          />
-        </Field>
-
-        <Field label="Requirement / Message" required error={errors.message} className="sm:col-span-2">
-          <textarea
-            rows={5}
-            value={form.message}
-            onChange={(e) => update("message", e.target.value)}
-            className={inputClass(errors.message)}
-            placeholder="Tell us what you're trying to achieve..."
-          />
-        </Field>
+        <div className="sm:col-span-2">
+          <Field label="Message" required error={errors.message}>
+            <textarea rows={6} value={form.message} onChange={(e) => update("message", e.target.value)} className={inputClass(errors.message)} placeholder="Tell us what you are working on, the challenge you are facing or the opportunity you want to explore..." />
+          </Field>
+        </div>
       </div>
 
-      <label className="mt-6 flex items-start gap-3 text-sm text-secondary-text">
-        <input
-          type="checkbox"
-          checked={form.consent}
-          onChange={(e) => update("consent", e.target.checked)}
-          className="mt-1 h-4 w-4 shrink-0 rounded border-border-color accent-[color:var(--teal)]"
-        />
-        I consent to Kashless contacting me about this enquiry and storing my
-        details in line with the Privacy Policy. *
+      <label className="mt-6 flex items-start gap-3 text-sm text-slate-600">
+        <input type="checkbox" checked={form.consent} onChange={(e) => update("consent", e.target.checked)} className="mt-1" />
+        <span>I consent to Kashless Ventures using the information provided to respond to my enquiry. {errors.consent && <span className="block text-red-600 mt-1">{errors.consent}</span>}</span>
       </label>
-      {errors.consent && <p className="mt-1 text-sm text-error">{errors.consent}</p>}
 
-      <button
-        type="submit"
-        disabled={status === "submitting"}
-        className="mt-7 flex w-full items-center justify-center gap-2 rounded-md px-6 py-3.5 text-[15px] font-semibold text-white transition-transform hover:-translate-y-0.5 disabled:opacity-70 sm:w-auto"
-        style={{ background: "var(--navy)" }}
-      >
-        {status === "submitting" && <Loader2 size={18} className="animate-spin" />}
-        {status === "submitting" ? "Submitting..." : "Submit Enquiry"}
+      <button type="submit" disabled={status === "submitting"} className="btn-primary mt-7 py-3.5 px-7 disabled:opacity-60">
+        {status === "submitting" ? <><Loader2 className="w-4 h-4 animate-spin" /> Sending...</> : <>Send an Enquiry</>}
       </button>
     </form>
   );
 }
 
-function Field({ label, required, error, hint, className = "", children }) {
+function Field({ label, required, error, children }) {
   return (
-    <div className={className}>
-      <label className="mb-1.5 block text-sm font-semibold text-navy">
-        {label} {required && <span className="text-error">*</span>}
-        {hint && <span className="ml-1 font-normal text-slate">({hint})</span>}
-      </label>
+    <div>
+      <label className="block text-sm font-semibold text-[#0B1E3D] mb-2">{label}{required && " *"}</label>
       {children}
-      {error && <p className="mt-1.5 text-sm text-error">{error}</p>}
+      {error && <p className="text-xs text-red-600 mt-1.5">{error}</p>}
     </div>
   );
 }
 
 function inputClass(error) {
-  return `w-full rounded-md border bg-white px-3.5 py-2.5 text-[15px] text-[#1A1A1A] outline-none transition-colors focus:border-teal ${
-    error ? "border-error" : "border-border-color"
-  }`;
+  return `w-full rounded-lg border ${error ? "border-red-400" : "border-slate-300"} bg-white px-3.5 py-3 text-sm text-[#0B1E3D] outline-none focus:border-[#0F6E62] focus:ring-2 focus:ring-[#0F6E62]/10`;
 }

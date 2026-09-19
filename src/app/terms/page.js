@@ -15,7 +15,7 @@ export default function TermsOfUse() {
 
       <h2>1. General Information Only</h2>
       <p>
-        The content on this website is for general informational purposes only. It does not constitute financial, investment, legal, or tax advice. Nothing herein is an offer or solicitation regarding securities or investments.
+        The content on this website is for general informational purposes only. It is provided for general informational purposes and does not constitute legal, tax, accounting or other professional advice.
       </p>
 
       <h2>2. Intellectual Property</h2>

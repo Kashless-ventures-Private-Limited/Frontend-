@@ -6,23 +6,20 @@ import IntroSplash from "@/components/IntroSplash";
 export const metadata = {
   metadataBase: new URL("https://www.kashless.in"),
   title: {
-    default: "Kashless Ventures | Technology. Capital. Growth.",
+    default: "Kashless Ventures Pvt. Ltd. | Technology Solutions & Business Consultation",
     template: "%s | Kashless Ventures",
   },
   description:
-    "Kashless Ventures helps organisations build stronger technology foundations and explore strategic opportunities for long-term value.",
+    "Technology solutions, business consultation and strategic partnerships for businesses looking to build, improve and grow.",
   openGraph: {
-    title: "Technology. Capital. Growth. | Kashless Ventures",
+    title: "Kashless Ventures Pvt. Ltd. | Technology Solutions & Business Consultation",
     description:
-      "Practical technology solutions and thoughtful strategic perspective for businesses building what comes next.",
-    siteName: "Kashless Ventures",
+      "Technology solutions, business consultation and strategic partnerships for businesses looking to build, improve and grow.",
+    siteName: "Kashless Ventures Pvt. Ltd.",
     type: "website",
-    locale: "en_US",
+    locale: "en_IN",
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }) {
