@@ -20,6 +20,7 @@ export const metadata = {
     locale: "en_IN",
   },
   robots: { index: true, follow: true },
+  icons: { icon: "/logo.png" },
 };
 
 export default function RootLayout({ children }) {

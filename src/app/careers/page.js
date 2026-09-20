@@ -224,7 +224,7 @@ export default function CareersPage() {
                         <option>Software & Product Engineering</option>
                         <option>Cloud & Infrastructure Architecture</option>
                         <option>Cybersecurity & Risk</option>
-                        <option>Strategic Capital & Business Operations</option>
+                        <option>Business Operations & Consultation</option>
                         <option>Other Specialisation</option>
                       </select>
                     </div>

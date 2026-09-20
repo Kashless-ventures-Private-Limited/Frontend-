@@ -55,7 +55,7 @@ export default function IntroSplash() {
           ? "-translate-y-full opacity-0 pointer-events-none"
           : "translate-y-0 opacity-100"
       }`}
-      aria-label="Uni Cards Style Splash Screen"
+      aria-label="Kashless Ventures website introduction"
     >
       {/* Top Header bar with Skip */}
       <div className="w-full max-w-7xl mx-auto px-6 sm:px-8 pt-8 flex items-center justify-between relative z-20">
@@ -99,7 +99,7 @@ export default function IntroSplash() {
             Kashless Ventures
           </h1>
           <p className="text-xs sm:text-sm uppercase tracking-[0.25em] text-[#0EB89B] font-semibold">
-            Technology · Strategic Capital · Enduring Value
+            Technology · Business Consultation · Strategic Partnerships
           </p>
         </div>
       </div>

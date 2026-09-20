@@ -23,7 +23,22 @@ export default function Footer() {
             <h4 className="text-xs uppercase tracking-widest text-white font-bold mb-4">Explore</h4>
             <ul className="space-y-2 text-sm">
               {navigation.map((item) => (
-                <li key={item.href}><Link href={item.href} className="hover:text-white transition-colors">{item.label}</Link></li>
+                <li key={item.href}>
+                  <Link href={item.href} className="hover:text-white transition-colors">
+                    {item.label}
+                  </Link>
+                  {item.children?.length > 0 && (
+                    <ul className="mt-1 ml-3 space-y-1 border-l border-slate-700 pl-3">
+                      {item.children.map((child) => (
+                        <li key={child.href}>
+                          <Link href={child.href} className="text-slate-500 hover:text-white transition-colors">
+                            {child.label}
+                          </Link>
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                </li>
               ))}
             </ul>
           </div>

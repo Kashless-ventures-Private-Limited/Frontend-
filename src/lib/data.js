@@ -20,8 +20,13 @@ export const navigation = [
   { label: "Home", href: "/" },
   { label: "About Us", href: "/about" },
   { label: "Technology Solutions", href: "/technology-solutions" },
-  { label: "Business Consultation", href: "/business-consultation" },
-  { label: "Strategic Partnerships", href: "/strategic-partnerships" },
+  {
+    label: "Business Consultation",
+    href: "/business-consultation",
+    children: [
+      { label: "Strategic Partnerships", href: "/strategic-partnerships" },
+    ],
+  },
   { label: "Insights", href: "/insights" },
   { label: "Contact", href: "/contact" },
 ];

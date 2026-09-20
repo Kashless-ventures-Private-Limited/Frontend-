@@ -28,7 +28,7 @@ export default function PrivacyPolicy() {
         We use the information we collect strictly to evaluate enquiries and communicate with you, including:
       </p>
       <ul>
-        <li>Routing enquiries to practice leads across Technology Solutions or Strategic Capital.</li>
+        <li>Routing enquiries to practice leads across Technology Solutions or Business Consultation.</li>
         <li>Reviewing potential partnerships, supplier relationships, or career applications.</li>
         <li>Ensuring website security, preventing fraudulent activity, and meeting regulatory requirements.</li>
       </ul>
