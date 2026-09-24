@@ -3,7 +3,9 @@
 import { useState } from "react";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Briefcase, Sparkles, Send, ShieldCheck } from "lucide-react";
-import { careersValues } from "@/lib/data";
+import {careersValues, createSeoMetadata } from "@/lib/data";
+
+export const metadata = createSeoMetadata("careers", "/careers");
 
 export default function CareersPage() {
   const [formData, setFormData] = useState({

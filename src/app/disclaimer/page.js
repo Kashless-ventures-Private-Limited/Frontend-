@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
-import { siteConfig, seoMetadataMap } from "@/lib/data";
+import {siteConfig, createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: seoMetadataMap.disclaimer.title,
-  description: seoMetadataMap.disclaimer.description,
-};
+export const metadata = createSeoMetadata("disclaimer", "/disclaimer");
 
 export default function DisclaimerPage() {
   return (

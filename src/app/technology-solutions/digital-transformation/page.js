@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { seoMetadataMap } from "@/lib/data";
+import {createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: seoMetadataMap.digitalTransformation.title,
-  description: seoMetadataMap.digitalTransformation.description,
-};
+export const metadata = createSeoMetadata("digitalTransformation", "/technology-solutions/digital-transformation");
 
 export default function DigitalTransformationPage() {
   return (

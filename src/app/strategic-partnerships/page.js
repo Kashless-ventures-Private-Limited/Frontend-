@@ -1,12 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, Handshake } from "lucide-react";
-import { partnershipPrinciples } from "@/lib/data";
+import {partnershipPrinciples, createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: "Strategic Partnerships | Kashless Ventures",
-  description: "Strategic business and technology partnerships that combine complementary capabilities to create meaningful opportunities and long-term value.",
-  alternates: { canonical: "/strategic-partnerships" },
-};
+export const metadata = createSeoMetadata("partnerships", "/strategic-partnerships");
 
 export default function StrategicPartnershipsPage() {
   return (

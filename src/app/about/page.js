@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { siteConfig, valuesList } from "@/lib/data";
+import {siteConfig, valuesList, createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: "About Us | Kashless Ventures",
-  description: "Learn how Kashless Ventures combines practical technology, business thinking and collaboration to help organizations move forward.",
-};
+export const metadata = createSeoMetadata("about", "/about");
 
 export default function AboutPage() {
   return (

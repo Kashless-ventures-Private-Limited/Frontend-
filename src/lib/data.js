@@ -290,111 +290,137 @@ export const enquiryRoutes = [
  *   /technology-solutions/licensing-managed-services
  *   /technology-solutions/digital-transformation
  */
+export const siteUrl = "https://www.kashless.in";
+
+export function createSeoMetadata(key, canonicalPath) {
+  const seo = seoMetadataMap[key];
+  return {
+    title: seo.title,
+    description: seo.description,
+    alternates: {
+      canonical: canonicalPath,
+    },
+    openGraph: {
+      title: seo.title,
+      description: seo.description,
+      url: `${siteUrl}${canonicalPath}`,
+      type: "website",
+      locale: "en_IN",
+      siteName: siteConfig.name,
+    },
+    twitter: {
+      card: "summary",
+      title: seo.title,
+      description: seo.description,
+    },
+  };
+}
+
 export const seoMetadataMap = {
   home: {
     title:
-      "Kashless Ventures Pvt. Ltd. | Technology Solutions & Business Consultation",
+      "Technology Solutions & Business Consultation",
     description:
       "Technology solutions, business consultation and strategic partnerships for businesses looking to build, improve and grow.",
   },
 
   about: {
-    title: "About Us | Kashless Ventures",
+    title: "About Us",
     description:
       "Learn how Kashless Ventures combines practical technology, business thinking and collaboration to help organizations move forward.",
   },
 
   technologySolutions: {
-    title: "Technology Solutions | Kashless Ventures",
+    title: "Technology Solutions",
     description:
       "Software, cloud, infrastructure, cybersecurity, licensing, managed IT and digital transformation solutions for businesses.",
   },
 
   softwareDigitalProducts: {
-    title: "Software & Web Development | Kashless Ventures",
+    title: "Software & Web Development",
     description:
       "Custom websites, web applications, business software, APIs, automation and digital products designed around real business requirements.",
   },
 
   cloudInfrastructure: {
-    title: "Cloud & Infrastructure | Kashless Ventures",
+    title: "Cloud & Infrastructure",
     description:
       "Cloud consulting, migration, infrastructure planning, optimization, servers, storage, networking and workplace IT solutions for businesses.",
   },
 
   cybersecurity: {
-    title: "Cybersecurity | Kashless Ventures",
+    title: "Cybersecurity",
     description:
       "Security assessments, network and endpoint protection, data protection and practical cybersecurity management for businesses.",
   },
 
   hardwareWorkplace: {
-    title: "Hardware & IT Infrastructure | Kashless Ventures",
+    title: "Hardware & IT Infrastructure",
     description:
       "Business hardware, servers, storage, networking, endpoints and IT infrastructure support for modern workplaces.",
   },
 
   licensingManagedServices: {
-    title: "Software Licensing & Managed IT | Kashless Ventures",
+    title: "Software Licensing & Managed IT",
     description:
       "Software licensing guidance, procurement support, license management, monitoring, maintenance, helpdesk and managed IT support.",
   },
 
   digitalTransformation: {
-    title: "Digital Transformation | Kashless Ventures",
+    title: "Digital Transformation",
     description:
       "Process automation, workflow improvement, technology modernization and data-driven solutions designed to improve business efficiency.",
   },
 
   consultation: {
-    title: "Business Consultation | Kashless Ventures",
+    title: "Business Consultation",
     description:
       "Practical business consultation covering process improvement, technology strategy, workflow design, operational planning and implementation support.",
   },
 
   partnerships: {
-    title: "Strategic Partnerships | Kashless Ventures",
+    title: "Strategic Partnerships",
     description:
       "Strategic business and technology partnerships that combine complementary capabilities to create meaningful opportunities and long-term value.",
   },
 
   contact: {
-    title: "Contact | Kashless Ventures",
+    title: "Contact",
     description:
       "Start a conversation about technology requirements, business consultation, strategic partnerships or a general business enquiry.",
   },
 
   insights: {
-    title: "Insights | Kashless Ventures",
+    title: "Insights",
     description:
       "Practical perspectives on technology trends, process improvement, digital transformation, cybersecurity and business strategy.",
   },
 
   careers: {
-    title: "Careers | Kashless Ventures",
+    title: "Careers",
     description:
       "Explore opportunities to build thoughtful, practical work at Kashless Ventures.",
   },
 
   disclaimer: {
-    title: "Website Disclaimer | Kashless Ventures",
+    title: "Website Disclaimer",
     description: "Website disclaimer for Kashless Ventures Pvt. Ltd.",
   },
 
   privacyPolicy: {
-    title: "Privacy Policy | Kashless Ventures",
+    title: "Privacy Policy",
     description:
       "Privacy practices for the Kashless Ventures website.",
   },
 
   terms: {
-    title: "Terms of Use | Kashless Ventures",
+    title: "Terms of Use",
     description:
       "Terms governing use of the Kashless Ventures website.",
   },
 
   cookiePolicy: {
-    title: "Cookie Notice | Kashless Ventures",
+    title: "Cookie Notice",
     description:
       "Cookie and privacy information for the Kashless Ventures website.",
   },

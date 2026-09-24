@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
+import { permanentRedirect } from "next/navigation";
 
 export function GET() {
-  return new NextResponse("", { status: 410 });
+  permanentRedirect("/strategic-partnerships");
 }

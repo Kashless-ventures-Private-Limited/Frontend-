@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, Cpu, Cloud, ShieldCheck, Laptop, Wrench, Workflow } from "lucide-react";
-import { techSolutionsList, howWeWork } from "@/lib/data";
+import {techSolutionsList, howWeWork, createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: "Technology Solutions | Kashless Ventures",
-  description: "Software, cloud, infrastructure, cybersecurity, licensing, managed IT and digital transformation solutions for businesses.",
-};
+export const metadata = createSeoMetadata("technologySolutions", "/technology-solutions");
 
 const icons = { 
   "software-digital-products": Cpu,

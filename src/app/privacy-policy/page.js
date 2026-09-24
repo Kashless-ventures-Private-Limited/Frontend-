@@ -1,10 +1,7 @@
 import LegalPage from "@/components/LegalPage";
-import { siteConfig, seoMetadataMap } from "@/lib/data";
+import {siteConfig, createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: seoMetadataMap.privacyPolicy.title,
-  description: seoMetadataMap.privacyPolicy.description,
-};
+export const metadata = createSeoMetadata("privacyPolicy", "/privacy-policy");
 
 export default function PrivacyPolicy() {
   return (

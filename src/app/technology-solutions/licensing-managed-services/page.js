@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Wrench, ArrowLeft } from "lucide-react";
-import { seoMetadataMap } from "@/lib/data";
+import {createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: seoMetadataMap.licensingManagedServices.title,
-  description: seoMetadataMap.licensingManagedServices.description,
-};
+export const metadata = createSeoMetadata("licensingManagedServices", "/technology-solutions/licensing-managed-services");
 
 export default function LicensingManagedServicesPage() {
   const checklist = [

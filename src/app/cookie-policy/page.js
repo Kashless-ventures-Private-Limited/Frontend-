@@ -1,10 +1,7 @@
 import LegalPage from "@/components/LegalPage";
-import { siteConfig, seoMetadataMap } from "@/lib/data";
+import {siteConfig, createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: seoMetadataMap.cookiePolicy.title,
-  description: seoMetadataMap.cookiePolicy.description,
-};
+export const metadata = createSeoMetadata("cookiePolicy", "/cookie-policy");
 
 export default function CookiePolicy() {
   return (

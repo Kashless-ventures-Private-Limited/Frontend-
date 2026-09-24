@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Laptop, ArrowLeft } from "lucide-react";
-import { seoMetadataMap } from "@/lib/data";
+import {createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: seoMetadataMap.hardwareWorkplace.title,
-  description: seoMetadataMap.hardwareWorkplace.description,
-};
+export const metadata = createSeoMetadata("hardwareWorkplace", "/technology-solutions/hardware-workplace");
 
 export default function HardwareWorkplacePage() {
   const checklist = [

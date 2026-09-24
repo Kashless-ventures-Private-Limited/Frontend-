@@ -1,7 +1,5 @@
-export const metadata = {
-  title: "Insights | Kashless Ventures",
-  description: "Practical perspectives on technology trends, process improvement, digital transformation, cybersecurity and business strategy.",
-};
+import { createSeoMetadata } from "@/lib/data";
+export const metadata = createSeoMetadata("insights", "/insights");
 
 const topics = [
   {

@@ -6,9 +6,17 @@ export default function robots() {
       {
         userAgent: "*",
         allow: "/",
-        disallow: ["/admin/"],
+        disallow: [
+          "/admin/",
+          "/personal-loan",
+          "/home-loan",
+          "/instant-loan",
+          "/instant-personal-loan",
+          "/capital-strategic-investments",
+        ],
       },
     ],
     sitemap: `${baseUrl}/sitemap.xml`,
+    host: baseUrl,
   };
 }

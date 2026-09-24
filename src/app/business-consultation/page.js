@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
-import { consultationServices } from "@/lib/data";
+import {consultationServices, createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: "Business Consultation | Kashless Ventures",
-  description: "Practical business consultation covering process improvement, technology strategy, workflow design, operational planning and implementation support.",
-};
+export const metadata = createSeoMetadata("consultation", "/business-consultation");
 
 export default function BusinessConsultationPage() {
   return (

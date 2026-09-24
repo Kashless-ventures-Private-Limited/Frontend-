@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Cloud, ArrowLeft } from "lucide-react";
-import { seoMetadataMap } from "@/lib/data";
+import {createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: seoMetadataMap.cloudInfrastructure.title,
-  description: seoMetadataMap.cloudInfrastructure.description,
-};
+export const metadata = createSeoMetadata("cloudInfrastructure", "/technology-solutions/cloud-infrastructure");
 
 export default function CloudInfrastructurePage() {
   const checklist = [

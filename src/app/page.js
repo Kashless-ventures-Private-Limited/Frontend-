@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, Cpu, BriefcaseBusiness, Handshake } from "lucide-react";
-import { howWeWork, siteConfig } from "@/lib/data";
+import {howWeWork, siteConfig, createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: "Kashless Ventures Pvt. Ltd. | Technology Solutions & Business Consultation",
-  description: "Technology solutions, business consultation and strategic partnerships for businesses looking to build, improve and grow.",
-};
+export const metadata = createSeoMetadata("home", "/");
 
 const pillars = [
   {

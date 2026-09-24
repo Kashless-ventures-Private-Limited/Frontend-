@@ -1,9 +1,7 @@
+import { createSeoMetadata } from "@/lib/data";
 import ContactForm from "@/components/ContactForm";
 
-export const metadata = {
-  title: "Contact | Kashless Ventures",
-  description: "Start a conversation about technology requirements, business consultation, strategic partnerships or a general business enquiry.",
-};
+export const metadata = createSeoMetadata("contact", "/contact");
 
 export default function ContactPage() {
   return (

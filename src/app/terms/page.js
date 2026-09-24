@@ -1,10 +1,7 @@
 import LegalPage from "@/components/LegalPage";
-import { siteConfig, seoMetadataMap } from "@/lib/data";
+import {siteConfig, createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: seoMetadataMap.terms.title,
-  description: seoMetadataMap.terms.description,
-};
+export const metadata = createSeoMetadata("terms", "/terms");
 
 export default function TermsOfUse() {
   return (

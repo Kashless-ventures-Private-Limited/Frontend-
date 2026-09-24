@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, Cpu, ArrowLeft, ShieldCheck } from "lucide-react";
-import { seoMetadataMap } from "@/lib/data";
+import {createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: seoMetadataMap.softwareDigitalProducts.title,
-  description: seoMetadataMap.softwareDigitalProducts.description,
-};
+export const metadata = createSeoMetadata("softwareDigitalProducts", "/technology-solutions/software-digital-products");
 
 export default function SoftwareDigitalProductsPage() {
   const checklist = [

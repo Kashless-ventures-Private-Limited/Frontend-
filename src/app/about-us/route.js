@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
+import { permanentRedirect } from "next/navigation";
 
-export function GET(request) {
-  return NextResponse.redirect(new URL("/about", request.url), 301);
+export function GET() {
+  permanentRedirect("/about");
 }

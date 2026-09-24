@@ -1,11 +1,8 @@
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, ShieldCheck, ArrowLeft } from "lucide-react";
-import { seoMetadataMap } from "@/lib/data";
+import {createSeoMetadata } from "@/lib/data";
 
-export const metadata = {
-  title: seoMetadataMap.cybersecurity.title,
-  description: seoMetadataMap.cybersecurity.description,
-};
+export const metadata = createSeoMetadata("cybersecurity", "/technology-solutions/cybersecurity");
 
 export default function CybersecurityPage() {
   const checklist = [
