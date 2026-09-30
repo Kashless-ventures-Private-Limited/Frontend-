@@ -17,6 +17,7 @@ export default function Footer() {
             </div>
             <p className="text-sm text-slate-400 leading-relaxed max-w-md">{siteConfig.shortAbout}</p>
             <p className="text-xs text-slate-500">{siteConfig.positioning}</p>
+            <p className="text-xs text-slate-500">CIN: {siteConfig.cin}</p>
           </div>
 
           <div className="lg:col-span-3">
@@ -51,6 +52,10 @@ export default function Footer() {
             </div>
             <div className="flex items-start gap-2.5 text-sm">
               <MapPin className="w-4 h-4 text-[#0D9488] shrink-0 mt-0.5" />
+              <span>{siteConfig.contact.registeredOffice}</span>
+            </div>
+            <div className="flex items-start gap-2.5 text-sm">
+              <MapPin className="w-4 h-4 text-[#0D9488] shrink-0 mt-0.5" />
               <span>{siteConfig.contact.location}</span>
             </div>
           </div>
@@ -61,6 +66,7 @@ export default function Footer() {
           <div className="flex gap-4">
             <Link href="/privacy-policy" className="hover:text-white">Privacy Policy</Link>
             <Link href="/terms" className="hover:text-white">Terms</Link>
+            <Link href="/refund-policy" className="hover:text-white">Refund Policy</Link>
             <Link href="/disclaimer" className="hover:text-white">Website Disclaimer</Link>
           </div>
         </div>

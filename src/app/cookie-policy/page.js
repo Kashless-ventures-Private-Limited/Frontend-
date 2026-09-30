@@ -1,38 +1,24 @@
-import LegalPage from "@/components/LegalPage";
-import {siteConfig, createSeoMetadata } from "@/lib/data";
+import Link from "next/link";
+import LegalPage, { PolicySections } from "@/components/LegalPage";
+import { createSeoMetadata } from "@/lib/data";
 
 export const metadata = createSeoMetadata("cookiePolicy", "/cookie-policy");
 
+const sections = [
+  { heading: "1. What Are Cookies?", paragraphs: ["Cookies are small text files and similar technologies stored on or associated with your device when you visit a website. They help websites maintain sessions, remember preferences, support security, improve functionality, and understand how visitors use the website.", "This Cookie Policy explains how Kashless Ventures Private Limited (Kashless Ventures, we, our, or us) may use cookies and similar technologies on our website and related web pages.", "This Policy does not govern the independent cookie or tracking practices of third-party websites, applications, or services linked from our website."] },
+  { heading: "2. How We Use Cookies", paragraphs: ["Depending on the website features and technologies deployed, Kashless Ventures may use the following categories of cookies and similar technologies:"], bullets: ["Essential Cookies: necessary for core website functionality, security, session management, authentication, forms, and other essential functions.", "Functional and Preference Cookies: may allow the website to remember selected preferences, settings, form information, language or regional preferences, and other choices.", "Analytics and Performance Cookies: may help us understand website traffic, page visits, usage patterns, interactions, performance, and how visitors use the website so that we can improve our services and user experience.", "Security Technologies: may be used to detect suspicious activity, protect sessions, prevent unauthorized access, and maintain website security.", "Third-Party Technologies: where applicable, may support analytics, marketing measurement, communications, embedded content, or other website functionality."] },
+  { heading: "3. Information Collected Through Cookies", paragraphs: ["Depending on the technology used, cookies and similar technologies may collect information such as:"], bullets: ["Device and browser information.", "IP address and approximate location information where applicable.", "Date, time and duration of website visits.", "Pages viewed and navigation patterns.", "Clicks, interactions and website usage events.", "Session identifiers and login information where applicable.", "Cookie preferences and consent choices.", "Cookies do not necessarily identify an individual by name. However, information collected through cookies or similar technologies may constitute personal data depending on the circumstances and applicable law."] },
+  { heading: "4. Why We Use Cookies", paragraphs: ["Kashless Ventures may use cookies and similar technologies to:"], bullets: ["Maintain website functionality and performance.", "Remember preferences and settings.", "Maintain secure sessions and protect against misuse.", "Understand website traffic and usage.", "Improve user experience and website performance.", "Measure the effectiveness of marketing activities where applicable and permitted."] },
+  { heading: "5. Cookie Consent and Control", paragraphs: ["Where required, visitors may be presented with a cookie banner or other consent mechanism when they first visit the website.", "Depending on the available controls, you may be able to accept all cookies, reject or disable non-essential cookies, or customize your cookie preferences.", "Where consent is used as the legal basis for non-essential cookies, you may change or withdraw your consent through the available Cookie Settings or preference controls. You may also manage or delete cookies through your browser or device settings.", "Withdrawal of consent does not affect the lawfulness of processing carried out before consent was withdrawn."] },
+  { heading: "6. Managing Cookies", paragraphs: ["You can manage, block or delete cookies through your browser or device settings.", "Please note that disabling certain cookies may affect website functionality, including sessions, forms, saved preferences, embedded features, or other functionality."] },
+  { heading: "7. Cookie Retention", paragraphs: ["We may use both session cookies and persistent cookies."], bullets: ["Session cookies generally expire when you close your browser or end the relevant session.", "Persistent cookies may remain on your device for a defined period or until manually deleted.", "The retention period depends on the purpose and configuration of the relevant cookie or technology and may vary between different services and third-party providers."] },
+  { heading: "8. Third-Party Services and Websites", paragraphs: ["Our website may contain links to or integrate with third-party websites, applications, software, Microsoft services, partner platforms, analytics services, or other external resources.", "Third parties may use their own cookies and similar technologies under their respective privacy and cookie policies. Kashless Ventures does not control the independent cookie or tracking practices of third parties outside our control."] },
+  { heading: "9. Relationship With Our Privacy Policy", paragraphs: ["This Cookie Policy should be read together with the Kashless Ventures Privacy Policy, which explains more broadly how personal data may be collected, used, stored, protected, and disclosed through our website and Services.", "Where information collected through cookies constitutes personal data, the applicable provisions of our Privacy Policy and applicable data-protection law may also apply."] },
+  { heading: "10. Updates to This Cookie Policy", paragraphs: ["Kashless Ventures may update this Cookie Policy from time to time to reflect changes in our website, technologies, third-party services, business operations, or applicable legal and regulatory requirements.", "The latest version will be published on the website with the updated Effective Date and Last Updated date."] },
+  { heading: "11. Contact Information", paragraphs: ["Kashless Ventures Private Limited", "Customer Support: Team Kashless", "Department: Support", "Email: info@kashless.in", "Registered Office: Sector 103, Gurgaon, Haryana - 122006", "Website: www.kashless.in", "For questions, concerns, or requests relating to cookies or tracking technologies, please contact us using the details above."] },
+  { heading: "12. Consent and Acknowledgment", paragraphs: ["Where applicable, by continuing to use the website after being presented with the relevant cookie controls, you acknowledge this Cookie Policy.", "Where consent is legally required for non-essential cookies, such cookies will be handled according to the applicable consent mechanism and your selected preferences."] },
+];
+
 export default function CookiePolicy() {
-  return (
-    <LegalPage title="Cookie Notice" updated="2026">
-      <p>
-        This Cookie Notice explains how {siteConfig.legalName} (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) uses cookies and similar technologies on our website.
-      </p>
-
-      <h2>1. What Are Cookies?</h2>
-      <p>
-        Cookies are small text files placed on your device by websites you visit. They help the website function efficiently and provide basic anonymous usage analytics.
-      </p>
-
-      <h2>2. Cookies We Use</h2>
-      <ul>
-        <li><strong>Strictly Necessary Cookies:</strong> Required for the fundamental operation, routing, and security of the website.</li>
-        <li><strong>Performance & Analytics Cookies:</strong> Used anonymously to understand visitor traffic patterns and improve interface speed.</li>
-      </ul>
-
-      <h2>3. Managing Cookie Preferences</h2>
-      <p>
-        You can control and disable cookies through your browser settings. Note that disabling certain essential cookies may impact website responsiveness.
-      </p>
-
-      <h2>4. Enquiries</h2>
-      <p>
-        For questions regarding our cookie practices, please contact{" "}
-        <a href={`mailto:${siteConfig.contact.email}`} className="font-semibold text-[#0F6E62] hover:underline">
-          {siteConfig.contact.email}
-        </a>.
-      </p>
-    </LegalPage>
-  );
+  return <LegalPage title="Cookie Policy" effectiveDate="25 September 2026" updated="25 September 2026"><PolicySections sections={sections} /><p>Read our <Link href="/privacy-policy" className="font-semibold text-[#0F6E62] hover:underline">Privacy Policy</Link> for more information about personal data.</p></LegalPage>;
 }

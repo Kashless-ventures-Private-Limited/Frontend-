@@ -5,30 +5,35 @@ export const metadata = createSeoMetadata("privacyPolicy", "/privacy-policy");
 
 export default function PrivacyPolicy() {
   return (
-    <LegalPage title="Privacy Policy" updated="2026">
+    <LegalPage title="Privacy Policy" effectiveDate="25 September 2026" updated="25 September 2026">
       <p>
         {siteConfig.legalName} (&ldquo;we&rdquo;, &ldquo;us&rdquo;, or &ldquo;our&rdquo;) is committed to protecting your privacy. This Privacy Policy describes how we collect, use, and safeguard personal information submitted through our website.
       </p>
 
-      <h2>1. Information We Collect</h2>
+      <h2>1. Information We May Collect</h2>
       <p>
-        We collect information that you directly provide to us when submitting an enquiry or introducing an opportunity, including:
+        Depending on the Services you use and the nature of our relationship with you, we may collect information that you provide or that is generated through use of our Services, including:
       </p>
       <ul>
-        <li><strong>Contact Information:</strong> Name, professional email address, telephone number, and organisation name.</li>
-        <li><strong>Enquiry Details:</strong> Business context, technology priorities, or strategic objectives you share with us.</li>
-        <li><strong>Career Submissions:</strong> Location, CV/resume details, and background notes submitted through the careers portal.</li>
+        <li><strong>Basic and Contact Information:</strong> Name, email address, mobile number, business name, designation, company details, and other contact information.</li>
+        <li><strong>Account and Business Information:</strong> Account details, organization information, user roles, service preferences, project requirements, support requests, and onboarding, procurement, or service-delivery information.</li>
+        <li><strong>Technology, Device and Network Information:</strong> IP address, browser type, operating system, device identifiers, logs, network information, and security-related technical information.</li>
+        <li><strong>Usage and Communications Information:</strong> Website or application activity, feature usage, feedback, performance data, emails, support tickets, project discussions, and business communications.</li>
       </ul>
 
-      <h2>2. How We Use Your Information</h2>
+      <p>We do not routinely require or collect bank statements, KYC documents, Aadhaar details, detailed financial records, credit profiles, or borrower financial information for Kashless Ventures' general website or business operations.</p>
+
+      <h2>2. How We Collect and Use Information</h2>
       <p>
-        We use the information we collect strictly to evaluate enquiries and communicate with you, including:
+        We may collect information through website, application, software and account forms; onboarding, proposals, contracts and procurement; APIs, platforms and dashboards; billing and licensing processes; cookies, SDKs, analytics and logs; and support or business communications. We use it for lawful business purposes, including:
       </p>
       <ul>
-        <li>Routing enquiries to practice leads across Technology Solutions or Business Consultation.</li>
-        <li>Reviewing potential partnerships, supplier relationships, or career applications.</li>
-        <li>Ensuring website security, preventing fraudulent activity, and meeting regulatory requirements.</li>
+        <li>Providing, operating, maintaining, and improving our technology Services and integrations.</li>
+        <li>Managing accounts, user access, roles, permissions, authentication, support, and implementation services.</li>
+        <li>Processing billing, licensing, renewals, commercial transactions, audit trails, backups, and business continuity.</li>
+        <li>Communicating about projects, support, service updates, renewals, security matters, and legal or contractual obligations.</li>
       </ul>
+      <p>Where our technology Services process client-controlled regulated or sensitive data, processing is limited to the contracted Service, the client's instructions, and applicable contractual requirements.</p>
 
       <h2>3. Confidentiality & Security</h2>
       <p>

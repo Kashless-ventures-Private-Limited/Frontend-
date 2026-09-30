@@ -15,6 +15,15 @@ export default function AboutPage() {
         </div>
       </section>
 
+      <section className="py-12 bg-white border-b border-slate-200/80">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-sm text-slate-600">
+          <h2 className="text-xl font-bold text-[#0B1E3D]">Company details</h2>
+          <p className="mt-3">{siteConfig.legalName}</p>
+          <p>CIN: {siteConfig.cin}</p>
+          <p>{siteConfig.contact.registeredOffice}</p>
+        </div>
+      </section>
+
       <section className="py-20 bg-white border-b border-slate-200/80">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid lg:grid-cols-12 gap-12">
           <div className="lg:col-span-5">

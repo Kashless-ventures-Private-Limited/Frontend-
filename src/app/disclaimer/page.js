@@ -1,50 +1,8 @@
-import Link from "next/link";
-import { ArrowLeft } from "lucide-react";
-import {siteConfig, createSeoMetadata } from "@/lib/data";
+import LegalPage, { PolicySections } from "@/components/LegalPage";
+import { createSeoMetadata } from "@/lib/data";
 
 export const metadata = createSeoMetadata("disclaimer", "/disclaimer");
 
 export default function DisclaimerPage() {
-  return (
-    <div>
-      <div className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Link href="/" className="inline-flex items-center gap-2 text-xs font-semibold text-[#0F6E62] uppercase tracking-wider">
-            <ArrowLeft className="w-3.5 h-3.5" /> Return to Home
-          </Link>
-        </div>
-      </div>
-      <section className="bg-gradient-to-b from-white to-[#F8FAFC] border-b border-slate-200/80 py-16 lg:py-20">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-          <span className="text-xs uppercase tracking-widest text-[#0F6E62] font-semibold">Legal</span>
-          <h1 className="text-3xl sm:text-4xl font-bold text-[#0B1E3D] mt-2">Website Disclaimer</h1>
-          <p className="mt-4 text-slate-600 text-sm">Last updated: 2026</p>
-        </div>
-      </section>
-      <section className="py-16 bg-white">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 prose-legal">
-          <h2>General Information</h2>
-          <p>
-            The information on this website is provided for general informational purposes only. Service descriptions are indicative and do not create a commitment to provide a particular product, service, outcome or availability. Specific services, deliverables, responsibilities and timelines are governed by separate written agreements.
-          </p>
-          <h2>Technology Services</h2>
-          <p>
-            Technology recommendations and implementations depend on the client environment, requirements and agreed scope. Organizations should assess their own operational, security and compliance requirements before adopting a technology solution.
-          </p>
-          <h2>Submissions</h2>
-          <p>
-            Information submitted through the website may be reviewed by {siteConfig.legalName} for responding to an enquiry and determining an appropriate next step. Please do not submit information you are not authorized to share.
-          </p>
-          <h2>Accuracy</h2>
-          <p>
-            {siteConfig.legalName} aims to keep website information clear and current, but does not warrant that every item is complete, error-free or current at all times. Content may be updated without notice.
-          </p>
-          <h2>Contact</h2>
-          <p>
-            Questions about this disclaimer can be sent to <a href={`mailto:${siteConfig.contact.email}`} className="text-[#0F6E62] underline">{siteConfig.contact.email}</a>.
-          </p>
-        </div>
-      </section>
-    </div>
-  );
+  return <LegalPage title="Disclaimer" effectiveDate="25 September 2026" updated="25 September 2026"><PolicySections sections={[{heading:"General Disclaimer",paragraphs:["The information, content, products, services, software, technology solutions, descriptions, documents and other resources provided by Kashless Ventures Private Limited are provided for general informational and business purposes. Information may change without prior notice."]},{heading:"Technology Services",paragraphs:["Kashless Ventures provides technology solutions, including software development and technology used in FinTech, digital lending, business operations, APIs, integrations, cloud and infrastructure solutions, deployment, DevOps, technical support, and related IT services. Outcomes may depend on client requirements, infrastructure, data, third-party systems, and other technical dependencies."]},{heading:"No Financial or Professional Advice",paragraphs:["Kashless Ventures is a technology solutions company. Unless expressly stated in a separate written agreement and legally permitted, it does not itself provide banking, lending, investment, insurance, or other regulated financial services merely by providing technology, software, integration, or infrastructure solutions. Content should not be treated as legal, financial, investment, tax, accounting, regulatory, cybersecurity, or other professional advice."]},{heading:"Third-Party Services & Integrations",paragraphs:["Our solutions may integrate with or depend on third-party services. Kashless Ventures does not control their availability, policies, pricing, functionality, security, or continued operation."]},{heading:"Contact Information",paragraphs:["Kashless Ventures Private Limited", "Customer Support: Team Kashless", "Department: Support", "Email: info@kashless.in", "Registered Office: Sector 103, Gurgaon, Haryana - 122006"]},{heading:"Service-Specific Agreements",paragraphs:["Specific client engagements may be governed by proposals, Statements of Work, purchase orders, Master Services Agreements, subscription terms, privacy or data-protection terms, or other written agreements. Where a specific written agreement applies, it governs the relevant Services to the extent of any conflict."]}]} /></LegalPage>;
 }

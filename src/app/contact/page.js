@@ -1,4 +1,4 @@
-import { createSeoMetadata } from "@/lib/data";
+import { createSeoMetadata, siteConfig } from "@/lib/data";
 import ContactForm from "@/components/ContactForm";
 
 export const metadata = createSeoMetadata("contact", "/contact");
@@ -18,6 +18,12 @@ export default function ContactPage() {
       <section className="py-16 lg:py-20 bg-[#F8FAFC]">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <ContactForm />
+          <div className="mt-8 rounded-xl border border-slate-200 bg-white p-6 text-sm text-slate-600">
+            <p className="font-semibold text-[#0B1E3D]">{siteConfig.legalName}</p>
+            <p>CIN: {siteConfig.cin}</p>
+            <p>{siteConfig.contact.registeredOffice}</p>
+            <a className="text-[#0F6E62] hover:underline" href={`mailto:${siteConfig.contact.email}`}>{siteConfig.contact.email}</a>
+          </div>
         </div>
       </section>
     </div>

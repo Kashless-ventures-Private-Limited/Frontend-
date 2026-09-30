@@ -55,6 +55,7 @@ const organizationSchema = {
   "@type": "Organization",
   "@id": `${siteUrl}/#organization`,
   name: siteConfig.legalName,
+  legalName: siteConfig.legalName,
   url: siteUrl,
   logo: `${siteUrl}/logo.png`,
   email: `mailto:${siteConfig.contact.email}`,
@@ -64,6 +65,11 @@ const organizationSchema = {
     addressLocality: "Gurugram",
     addressRegion: "Haryana",
     addressCountry: "IN",
+  },
+  identifier: {
+    "@type": "PropertyValue",
+    propertyID: "CIN",
+    value: siteConfig.cin,
   },
 };
 

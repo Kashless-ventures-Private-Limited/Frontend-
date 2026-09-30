@@ -16,7 +16,8 @@ const routes = [
   { path: "/contact", priority: 0.9 },
   { path: "/careers", priority: 0.6 },
   { path: "/privacy-policy", priority: 0.3 },
-  { path: "/terms", priority: 0.3 },
+  { path: "/terms-conditions", priority: 0.3 },
+  { path: "/refund-policy", priority: 0.3 },
   { path: "/disclaimer", priority: 0.3 },
   { path: "/cookie-policy", priority: 0.3 },
 ];

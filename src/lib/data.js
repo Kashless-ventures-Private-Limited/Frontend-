@@ -1,18 +1,19 @@
 export const siteConfig = {
   name: "Kashless Ventures",
-  legalName: "Kashless Ventures Pvt. Ltd.",
+  legalName: "Kashless Ventures Private Limited",
+  cin: "U62099HR2026PTC151016",
   tagline:
     "Technology Solutions. Business Consultation. Strategic Partnerships.",
   positioning:
     "Technology Solutions. Business Consultation. Strategic Partnerships.",
   shortAbout:
-    "Kashless Ventures Pvt. Ltd. is a technology and business solutions company focused on helping organizations solve challenges, improve the way they operate and create opportunities for sustainable growth.",
+    "Kashless Ventures Private Limited is a technology and business solutions company focused on helping organizations solve challenges, improve the way they operate and create opportunities for sustainable growth.",
   quote:
     "Kashless Ventures brings technology, business thinking and strategic collaboration together to help businesses move forward.",
   contact: {
-    email: "care@kashless.in",
+    email: "info@kashless.in",
     location: "Gurugram, India",
-    registeredOffice: "Kashless Ventures Pvt. Ltd., Gurugram, Haryana, India",
+    registeredOffice: "Sector 103, Gurgaon, Haryana - 122006",
   },
 };
 
@@ -414,15 +415,21 @@ export const seoMetadataMap = {
   },
 
   terms: {
-    title: "Terms of Use",
+    title: "Terms & Conditions",
     description:
-      "Terms governing use of the Kashless Ventures website.",
+      "Terms and Conditions governing Kashless Ventures technology and business services.",
   },
 
   cookiePolicy: {
-    title: "Cookie Notice",
+    title: "Cookie Policy",
     description:
-      "Cookie and privacy information for the Kashless Ventures website.",
+      "Cookie and tracking information for the Kashless Ventures website.",
+  },
+
+  refundPolicy: {
+    title: "Refund Policy",
+    description:
+      "Refund, cancellation, credit and adjustment terms for Kashless Ventures services and products.",
   },
 };
 

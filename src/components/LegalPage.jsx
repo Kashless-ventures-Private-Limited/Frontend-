@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 
-export default function LegalPage({ title, updated, children }) {
+export default function LegalPage({ title, effectiveDate, updated, children }) {
   return (
     <div className="space-y-0">
       <div className="bg-white border-b border-slate-200">
@@ -24,9 +24,10 @@ export default function LegalPage({ title, updated, children }) {
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight text-[#0B1E3D] mt-2">
             {title}
           </h1>
-          <p className="mt-4 text-slate-600 text-sm">
-            Last updated: {updated || "2026"}
-          </p>
+          <div className="mt-4 space-y-1 text-sm text-slate-600">
+            {effectiveDate && <p>Effective date: {effectiveDate}</p>}
+            <p>Last updated: {updated || "2026"}</p>
+          </div>
         </div>
       </section>
 
@@ -37,4 +38,20 @@ export default function LegalPage({ title, updated, children }) {
       </section>
     </div>
   );
+}
+
+export function PolicySections({ sections }) {
+  return sections.map((section) => (
+    <section key={section.heading}>
+      <h2>{section.heading}</h2>
+      {section.paragraphs?.map((paragraph) => (
+        <p key={paragraph}>{paragraph}</p>
+      ))}
+      {section.bullets?.length > 0 && (
+        <ul>
+          {section.bullets.map((bullet) => <li key={bullet}>{bullet}</li>)}
+        </ul>
+      )}
+    </section>
+  ));
 }
